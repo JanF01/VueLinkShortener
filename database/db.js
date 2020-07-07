@@ -4,11 +4,11 @@ const sequelize = new Sequelize('shortener', 'root', '', {
     host: 'localhost',
     dialect: 'mysql',
 
-    pool:{
+    pool: {
         max: 20,
         min: 0,
-        aquire: 300,
-        idle: 50
+        aquire: 3000,
+        idle: 500
     }
 })
 

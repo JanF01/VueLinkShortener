@@ -1,18 +1,78 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Vue shortener</title>
+    <meta http-equiv="X-UA-Compatibe" content="IE=Edge" />
+    <title>Vcuteify</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://jenil.github.io/bulmaswatch/cyborg/bulmaswatch.min.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
 
-</head>
+  <body>
+    <container>
+      <section class="hero is-medium is-primary is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              VCuteify
+            </h1>
+            <h2 class="subtitle">
+              Shorten your long links
+            </h2>
+          </div>
+        </div>
+      </section>
+      <main class="tile is-8 is-vertical is-parent" id="app">
+        <form @submit.prevent="createCute()">
+          <div class="field is-horizontal tile is-child">
+            <div class="field-label is-normal">
+              <label class="label">URL</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <input
+                    v-model="url"
+                    class="input is-large"
+                    type="text"
+                    placeholder="Your Link"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal tile is-child">
+            <div class="field-label is-normal">
+              <label class="label">Shortened Name</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <input
+                    v-model="name"
+                    class="input is-large"
+                    type="text"
+                    placeholder="Your Cute Name"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            type="submit"
+            class="button is-large is-info tile is-4 cuteify"
+          >
+            Cuteify
+          </button>
+        </form>
+      </main>
+    </container>
 
-<body>
-    <h1>cute.li</h1>
-    <h3>Shorten your long URL</h3>
-
-</body>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <script src="./main.js"></script>
+  </body>
 </html>

@@ -1,22 +1,20 @@
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
 
-module.exports = (Sequelize) => {
-var Short = Sequelize.define("Short", {
-      id:{
-        type: Sequelize.INT,
-        primaryKey: true
-      },
-      short:{
-          type: Sequelize.STRING
-      },
-      long:{
-          type: Sequelize.STRING
-      }
+const db = require("../database/db.js");
 
+const Short = db.sequelize.define("short", {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+  },
+  url: {
+    type: Sequelize.STRING,
+  },
+  name: {
+    type: Sequelize.STRING,
+  },
+}, {
+  timestamps: false
+});
 
-
-})
-
-
-  return Short;
-}
+module.exports = Short;

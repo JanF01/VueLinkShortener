@@ -1,0 +1,23 @@
+html {
+    background: white;
+}
+
+main {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.field {
+    margin-top: 1em;
+}
+
+.label {
+    margin-top: 15%;
+    color: rgba(0, 0, 0, 0.74);
+    font-size: 1.2em !important;
+}
+
+.cuteify {
+    margin: 0 auto;
+    margin-top: 1em;
+}
