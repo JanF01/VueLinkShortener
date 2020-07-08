@@ -11,10 +11,10 @@ const schema = Joi.object().keys({
     url: Joi.string().uri({
         scheme: [/https?/],
     }),
-    name: Joi.string().token().min(1).max(100).required(),
+    name: Joi.string().token().min(1).max(100).required()
 });
 
-shortener.post("/save", async function (req, res) {
+shortener.post("/save", (req, res) => {
     const linkData = {
         url: req.body.url,
         name: req.body.name,
@@ -22,33 +22,30 @@ shortener.post("/save", async function (req, res) {
 
 
     const result = Joi.validate(linkData, schema);
-
+    console.log(req.body)
     if (result.error === null) {
 
-        try {
-            await Short.findOne({
-                where: {
-                    name: linkData.name,
-                },
-            }).then(async function (corelation) {
-                if (!corelation) {
-                    Short.create(linkData).then(
-                        () => {
-                            res.send("Shortening Successfull!");
-                        },
-                        (error) => {
-                            res.send("Shortening Error!");
-                        }
-                    );
-                } else {
-                    res.send("Name already used");
-                }
-            });
-        } catch (error) {
-            res.send(error)
-        }
+        Short.findOne({
+            where: {
+                name: linkData.name,
+            },
+        }).then((corelation) => {
+            if (!corelation) {
+
+                Short.create(linkData).then(
+                    (response) => {
+                        res.send('Shortening Successfull!')
+                    },
+                    (error) => {
+                        res.send('Shortening Error!')
+                    }
+                );
+            } else {
+                res.send("Name already used")
+            }
+        });
     } else {
-        res.send("Wrong data");
+        res.send("Wrong data")
     }
 });
 

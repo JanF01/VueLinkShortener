@@ -3,25 +3,33 @@ new Vue({
     data: {
         name: '',
         url: '',
+        alerts: '',
+        danger: false,
     },
     methods: {
         createCute() {
             const body = {
-                name: this.name,
-                url: this.url
+                url: this.url,
+                name: this.name
             }
 
             fetch('/api/save', {
                 method: 'POST',
                 body: JSON.stringify(body),
                 headers: {
-                    'content-type': 'application/json'
+                    'Content-Type': 'application/json'
                 }
             }).then(response => {
-                console.log(response);
-                return response.json();
+                response.text().then((value) => {
+                    this.alerts = value;
+                    if (value == "Wrong data" || value == "Name already used") {
+                        this.danger = true;
+                    } else {
+                        this.danger = false;
+                    }
+                });
             }).then(result => {
-                console.log(result)
+
             })
         }
     }

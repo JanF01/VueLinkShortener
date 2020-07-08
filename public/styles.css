@@ -21,3 +21,11 @@ main {
     margin: 0 auto;
     margin-top: 1em;
 }
+
+.alert {
+    margin-top: 5%;
+}
+
+.unvis {
+    display: none;
+}
